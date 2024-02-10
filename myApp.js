@@ -47,7 +47,17 @@ function nameHandler(req, res) {
     res.json({ name: `${firstName} ${lastName}` });
 }
 
-app.route('/name').get(nameHandler).post(nameHandler);
+app.get('/name', nameHandler);
+
+app.post('/name', function (req, res) {
+
+    const firstName = req.body.first;
+    const lastName = req.body.last;
+
+    res.json({ name: `${firstName} ${lastName}` });
+})
+
+//app.route('/name').get(nameHandler).post(nameHandler);
 
 
 
