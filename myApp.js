@@ -6,6 +6,11 @@ const absolutePath = __dirname + '/views/index.html';
 
 app.use('/public', express.static(__dirname + '/public'));
 
+app.use(function (req, res, next) {
+    const logger = `${req.method} ${req.path} - ${req.ip}`;
+    console.log(logger);
+})
+
 app.get('/', function (req, res) {
     res.sendFile(absolutePath);
 })
