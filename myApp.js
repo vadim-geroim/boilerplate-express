@@ -9,6 +9,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use(function (req, res, next) {
     const logger = `${req.method} ${req.path} - ${req.ip}`;
     console.log(logger);
+    next();
 })
 
 app.get('/', function (req, res) {
